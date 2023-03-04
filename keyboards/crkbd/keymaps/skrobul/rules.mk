@@ -11,3 +11,6 @@ LTO_ENABLE      = yes
 
 COMBO_ENABLE    = yes
 CONSOLE_ENABLE  = no
+
+LUNA_ENABLE = yes
+WPM_ENABLE = yes
