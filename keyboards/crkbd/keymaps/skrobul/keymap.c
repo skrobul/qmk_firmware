@@ -30,7 +30,9 @@ enum custom_keycodes {
   TMUXNEXT = SAFE_RANGE,
   TMUXPREV,
   FN_MO13,
-  FN_MO23
+  FN_MO23,
+  TMUXCOPY,
+  TMUXPASTE
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -53,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LCTL, G(KC_1), G(KC_2), G(KC_3), G(KC_4), G(KC_5),                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, KC_HOME, KC_END,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, TMUXPREV, TMUXNEXT, KC_PSCR,
+      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, TMUXCOPY, TMUXPASTE,                  TMUXPREV, TMUXNEXT, _______, _______, _______, KC_PSCR,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
@@ -103,6 +105,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case TMUXPREV:
       if (record->event.pressed) {
         SEND_STRING(SS_LCTL("b") SS_DELAY(50) "p");
+      }
+      return false;
+
+    case TMUXCOPY:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTL("b") SS_DELAY(50) "[");
+      }
+      return false;
+
+    case TMUXPASTE:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTL("b") SS_DELAY(50) "]");
       }
       return false;
 
