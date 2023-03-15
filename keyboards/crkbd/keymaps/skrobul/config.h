@@ -45,10 +45,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #ifdef RGB_MATRIX_ENABLE
-#   define RGB_MATRIX_KEYPRESSES // reacts to keypresses
+/* #   define RGB_MATRIX_KEYPRESSES // reacts to keypresses */
 // #   define RGB_MATRIX_KEYRELEASES // reacts to keyreleases (instead of keypresses)
 #   define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
-#   define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+/* #   define RGB_MATRIX_FRAMEBUFFER_EFFECTS */
 // #   define RGB_MATRIX_LED_PROCESS_LIMIT (RGB_MATRIX_LED_COUNT + 4) / 5 // limits the number of LEDs to process in an animation per task run (increases keyboard responsiveness)
 // #   define RGB_MATRIX_LED_FLUSH_LIMIT 16 // limits in milliseconds how frequently an animation will update the LEDs. 16 (16ms) is equivalent to limiting to 60fps (increases keyboard responsiveness)
 #    define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150 // limits maximum brightness of LEDs to 150 out of 255. Higher may cause the controller to crash. 
@@ -81,7 +81,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* #    define ENABLE_RGB_MATRIX_CYCLE_PINWHEEL */
 /* #    define ENABLE_RGB_MATRIX_CYCLE_SPIRAL */
 /* #    define ENABLE_RGB_MATRIX_DUAL_BEACON */
-#    define ENABLE_RGB_MATRIX_RAINBOW_BEACON
+/* #    define ENABLE_RGB_MATRIX_RAINBOW_BEACON */
 /* #    define ENABLE_RGB_MATRIX_RAINBOW_PINWHEELS */
 /* #    define ENABLE_RGB_MATRIX_RAINDROPS */
 /* #    define ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS */
@@ -96,11 +96,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* #    define ENABLE_RGB_MATRIX_DIGITAL_RAIN */
 // enabled only of RGB_MATRIX_KEYPRESSES or RGB_MATRIX_KEYRELEASES is defined
 /* #    define ENABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE // bad */
-#    define ENABLE_RGB_MATRIX_SOLID_REACTIVE
+/* #    define ENABLE_RGB_MATRIX_SOLID_REACTIVE */
 /* #    define ENABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE */
 /* #    define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE */
-#    define ENABLE_RGB_MATRIX_SOLID_REACTIVE_CROSS
-#    define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTICROSS
+/* #    define ENABLE_RGB_MATRIX_SOLID_REACTIVE_CROSS */
+/* #    define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTICROSS */
 /* #    define ENABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS */
 /* #    define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS */
 /* #    define ENABLE_RGB_MATRIX_SPLASH */
@@ -115,3 +115,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #define COMBO_COUNT 1
+#define COMBO_TERM 100
+
+/* modtap configuration */
+
+#define TAPPING_TERM 205
+
+// prevent normal rollover on alphas accidentally triggering mods
+#define IGNORE_MOD_TAP_INTERRUPT
+
+// rapid switch from tap to hold (disables double tap hold auto-repeat)
+#undef TAPPING_FORCE_HOLD

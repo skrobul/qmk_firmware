@@ -19,11 +19,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 #include "skrobul.h"
 
+// i3 WM workspace switching
 #define I3_1 G(KC_1)
 #define I3_2 G(KC_2)
 #define I3_3 G(KC_3)
 #define I3_4 G(KC_4)
 #define I3_5 G(KC_5)
+
+
+// Left-hand home row mods
+#define GUI_A LGUI_T(KC_A)
+#define ALT_S LALT_T(KC_S)
+#define CTL_D LCTL_T(KC_D)
+#define SFT_F LSFT_T(KC_F)
+
+// Right-hand home row mods
+#define SFT_J RSFT_T(KC_J)
+#define CTL_K RCTL_T(KC_K)
+#define ALT_L LALT_T(KC_L)
+#define GUI_SCLN RGUI_T(KC_SCLN)
 
 
 enum custom_keycodes {
@@ -38,9 +52,9 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     HYPR_T(KC_TAB),    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
+     HYPR_T(KC_TAB),    KC_Q,      KC_W,    KC_E,    KC_R,    KC_T,                 KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
+      KC_LCTL,   GUI_A,   ALT_S,  CTL_D,    SFT_F,    KC_G,                         KC_H,   SFT_J,   CTL_K,  ALT_L ,GUI_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ESC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -55,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LCTL, G(KC_1), G(KC_2), G(KC_3), G(KC_4), G(KC_5),                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, KC_HOME, KC_END,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, TMUXCOPY, TMUXPASTE,                  TMUXPREV, TMUXNEXT, _______, _______, _______, KC_PSCR,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TMUXCOPY, TMUXPASTE,                  TMUXPREV, TMUXNEXT, _______, _______, _______, KC_PSCR,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
@@ -77,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       KC_F1  ,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_F6 ,                       KC_F7  , KC_F8  ,  KC_F9 ,  KC_F10, KC_F11, KC_F12,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, DT_UP, DT_DOWN,                        DT_PRNT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, QK_BOOT, QK_CLEAR_EEPROM,             KC_MEDIA_NEXT_TRACK, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -145,7 +159,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 }
 
-const uint16_t PROGMEM esc_combo[] = {KC_J, KC_K, COMBO_END};
-combo_t key_combos[COMBO_COUNT] = {
-    COMBO(esc_combo, KC_ESC),
-};
+/* const uint16_t PROGMEM esc_combo[] = {KC_U, KC_I, COMBO_END}; */
+/* combo_t key_combos[COMBO_COUNT] = { */
+/*     COMBO(esc_combo, KC_ESC), */
+/* }; */

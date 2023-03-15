@@ -22,13 +22,13 @@ void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer\n"), false);
     switch (layer_state) {
         case L_BASE:
-            oled_write_ln_P(PSTR("Default"), false);
+            oled_write_ln_P(PSTR("0"), false);
             break;
         case L_LOWER:
-            oled_write_ln_P(PSTR("Lower"), false);
+            oled_write_ln_P(PSTR("1"), false);
             break;
         case L_RAISE:
-            oled_write_ln_P(PSTR("Raise"), false);
+            oled_write_ln_P(PSTR("2"), false);
             break;
         case L_ADJUST:
         case L_ADJUST|L_LOWER:
