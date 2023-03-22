@@ -126,3 +126,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // rapid switch from tap to hold (disables double tap hold auto-repeat)
 #undef TAPPING_FORCE_HOLD
+
+
+#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
