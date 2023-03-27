@@ -66,7 +66,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* #    define ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN */
 /* #    define ENABLE_RGB_MATRIX_GRADIENT_LEFT_RIGHT */
 #    define ENABLE_RGB_MATRIX_BREATHING
-#    define ENABLE_RGB_MATRIX_BAND_SAT
+/* #    define ENABLE_RGB_MATRIX_BAND_SAT */
 /* #    define ENABLE_RGB_MATRIX_BAND_VAL */
 /* #    define ENABLE_RGB_MATRIX_BAND_PINWHEEL_SAT */
 /* #    define ENABLE_RGB_MATRIX_BAND_PINWHEEL_VAL */
@@ -76,7 +76,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* #    define ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT */
 /* #    define ENABLE_RGB_MATRIX_CYCLE_UP_DOWN */
 /* #    define ENABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON */
-#    define ENABLE_RGB_MATRIX_CYCLE_OUT_IN
+/* #    define ENABLE_RGB_MATRIX_CYCLE_OUT_IN */
 /* #    define ENABLE_RGB_MATRIX_CYCLE_OUT_IN_DUAL */
 /* #    define ENABLE_RGB_MATRIX_CYCLE_PINWHEEL */
 /* #    define ENABLE_RGB_MATRIX_CYCLE_SPIRAL */
@@ -119,13 +119,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* modtap configuration */
 
-#define TAPPING_TERM 205
+#define TAPPING_TERM 180
+#define TAPPING_TERM_PER_KEY
+
 
 // prevent normal rollover on alphas accidentally triggering mods
 #define IGNORE_MOD_TAP_INTERRUPT
-
-// rapid switch from tap to hold (disables double tap hold auto-repeat)
-#undef TAPPING_FORCE_HOLD
-
+#define PERMISSIVE_HOLD
+#define QUICK_TAP_TERM_PER_KEY
+#define QUICK_TAP_TERM TAPPING_TERM
 
 #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD

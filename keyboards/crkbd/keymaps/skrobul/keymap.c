@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 #include "skrobul.h"
+#include "features/achordion.h"
 
 // i3 WM workspace switching
 #define I3_1 G(KC_1)
@@ -110,6 +111,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 #endif // OLED_ENABLE
 
+  if (!process_achordion(keycode, record)) { return false; }
+
   switch (keycode) {
     case TMUXNEXT:
       if (record->event.pressed) {
@@ -159,7 +162,34 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 }
 
+
+
+void matrix_scan_user(void) {
+  achordion_task();
+}
+
 /* const uint16_t PROGMEM esc_combo[] = {KC_U, KC_I, COMBO_END}; */
 /* combo_t key_combos[COMBO_COUNT] = { */
 /*     COMBO(esc_combo, KC_ESC), */
 /* }; */
+
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SFT_F:
+        case SFT_J:
+            return g_tapping_term - 50;
+        default:
+            return g_tapping_term;
+    }
+}
+// replacement for get_tapping_force_hold
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SFT_J:
+        case CTL_K:
+            return QUICK_TAP_TERM;
+        default:
+            return 0;
+    }
+}
