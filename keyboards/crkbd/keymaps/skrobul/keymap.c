@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 #include "skrobul.h"
-#include "features/achordion.h"
+// #include "features/achordion.h"
 
 // i3 WM workspace switching
 #define I3_1 G(KC_1)
@@ -53,7 +53,7 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     HYPR_T(KC_TAB),    KC_Q,      KC_W,    KC_E,    KC_R,    KC_T,                 KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
+     LT(4, KC_TAB),    KC_Q,      KC_W,    KC_E,    KC_R,    KC_T,                 KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LCTL,   GUI_A,   ALT_S,  CTL_D,    SFT_F,    KC_G,                         KC_H,   SFT_J,   CTL_K,  ALT_L ,GUI_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -98,6 +98,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
+  ),
+  [4] = LAYOUT_split_3x6_3(
+  // i3 navigation layer
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+      XXXXXXX, G(KC_1),    G(KC_2),    G(KC_3),    G(KC_4),    G(KC_5),    G(KC_6),   G(KC_7),   G(KC_8),   G(KC_9),   G(KC_0),   XXXXXXX,
+      XXXXXXX, LSG(KC_1),  LSG(KC_2),  LSG(KC_3),  LSG(KC_4),  LSG(KC_5),  LSG(KC_6), LSG(KC_7), LSG(KC_8), LSG(KC_9), LSG(KC_0), XXXXXXX,
+      XXXXXXX, HYPR(KC_Z), HYPR(KC_X), HYPR(KC_C), HYPR(KC_V), HYPR(KC_B), XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,    XXXXXXX,
+                                          KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
+                                      //`--------------------------'  `--------------------------'
+      
   )
 };
 
@@ -111,7 +121,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 #endif // OLED_ENABLE
 
-  if (!process_achordion(keycode, record)) { return false; }
+  // if (!process_achordion(keycode, record)) { return false; }
 
   switch (keycode) {
     case TMUXNEXT:
@@ -164,32 +174,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
 
-void matrix_scan_user(void) {
-  achordion_task();
-}
-
+// void matrix_scan_user(void) {
+//   achordion_task();
+// }
+//
 /* const uint16_t PROGMEM esc_combo[] = {KC_U, KC_I, COMBO_END}; */
 /* combo_t key_combos[COMBO_COUNT] = { */
 /*     COMBO(esc_combo, KC_ESC), */
 /* }; */
-
-
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case SFT_F:
-        case SFT_J:
-            return g_tapping_term - 50;
-        default:
-            return g_tapping_term;
-    }
-}
-// replacement for get_tapping_force_hold
-uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case SFT_J:
-        case CTL_K:
-            return QUICK_TAP_TERM;
-        default:
-            return 0;
-    }
-}
+//
+//
+// uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//         case SFT_F:
+//         case SFT_J:
+//             return g_tapping_term - 50;
+//         default:
+//             return g_tapping_term;
+//     }
+// }
+// // replacement for get_tapping_force_hold
+// uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//         case SFT_J:
+//         case CTL_K:
+//             return QUICK_TAP_TERM;
+//         default:
+//             return 0;
+//     }
+// }

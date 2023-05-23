@@ -17,8 +17,8 @@ WPM_ENABLE = yes
 
 
 
-DYNAMIC_TAPPING_TERM_ENABLE = yes
-CAPS_WORD_ENABLE = yes
+DYNAMIC_TAPPING_TERM_ENABLE = no
+CAPS_WORD_ENABLE = no
 
 
-SRC += features/achordion.c
+#SRC += features/achordion.c
