@@ -44,8 +44,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 enum custom_keycodes {
   TMUXNEXT = SAFE_RANGE,
   TMUXPREV,
-  FN_MO13,
-  FN_MO23,
+  // FN_MO13,
+  // FN_MO23,
   TMUXCOPY,
   TMUXPASTE
 };
